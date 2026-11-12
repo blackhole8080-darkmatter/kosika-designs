@@ -113,6 +113,25 @@ model: `python ui/render.py ui/samples/*.json` writes them to `ui/out/`.
 Other programs can reuse the parts: `ui_icon(name)`, `ui_tokens_css()` and
 the `ui_render` workflow in `kosika/std/designs_ui.kos`.
 
+#### Designs that run
+
+A design can also be the real window of a program. `ui_app` takes a design
+and binds its parts to workflows. The place you type sends to one workflow,
+and the plan, the numbers and the lists fill in from the answers.
+`kosika-native serve PROGRAM.kos --page PAGE.html` shows the window and
+runs those workflows. Designs Studio (`ui/apps/studio.kos`) is built this
+way. Its window was drawn by Designs, and whatever you ask it is drawn by
+Designs too, inside the chat:
+
+```text
+.\ui\apps\studio.ps1
+```
+
+![Designs Studio, live](shots/ui/studio-live.jpg)
+
+On a narrow screen the sidebar and panel fold away, so the same window
+works on a phone.
+
 ### A flow, and when Kosika shows no photo
 
 ![Photosynthesis](shots/photosynthesis.png)
@@ -183,7 +202,7 @@ diagram, an animated illustration, moving art, or one canvas of all three.
 | `kosika/std/designs_ui.kos` | Designs websites, phone screens, agent windows and artifacts in one design system |
 | `explain.kos` (here) | An agent that answers in words and draws a canvas beside them |
 | `sunflower.kos`, `studio.kos` (here) | Traces and measures a real sunflower photo |
-| `ui.ps1`, `ui/` (here) | Designs a screen from one sentence; sample descriptions and their renderer |
+| `ui.ps1`, `ui/` (here) | Designs a screen from one sentence; sample descriptions, their renderer, and Designs Studio (`ui/apps/`), a window that runs |
 | `eyes.py` (here) | Finds freely licensed photos on Wikipedia and Wikimedia Commons |
 | `art/` (here) | Hand-made illustrations and their README |
 
