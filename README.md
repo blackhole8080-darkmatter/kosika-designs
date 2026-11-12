@@ -78,6 +78,41 @@ between" and "should I learn Rust or Go". Each row is named on the left and
 sized to fit its longest cell. When the question asks which to choose, the
 last step gives a recommendation and the reason for it.
 
+### Any screen: a website, a phone app, an agent window
+
+Ask for a screen and Kosika designs it. A model writes only what the screen
+says and which blocks it is made of (a nav, a hero, cards, a list, a chat,
+a tab bar). Kosika checks that description and draws every block itself, in
+one calm, minimal design system: one type scale, one spacing scale, hairline
+borders, soft shadows, one accent and its own line icons. So a small or
+offline model designs as well as a big one, and every design looks finished.
+
+```text
+.\ui.ps1 "a landing page for a quiet coffee shop"
+```
+
+![A landing page for Kosika](shots/ui/kosika-site.jpg)
+
+![Three phone screens for a study companion](shots/ui/study-phone.jpg)
+
+![An agent window for a research agent, in dark](shots/ui/research-agent.jpg)
+
+![A summary card artifact](shots/ui/week-artifact.jpg)
+
+Four targets: **web** (in a browser window, responsive), **phone** (one to
+three screens side by side), **agent** (sidebar, conversation and a live
+panel) and **artifact** (one card). The words of the ask choose the target,
+the theme (light unless you say dark) and the accent (ten, each checked for
+WCAG contrast in light and dark). Kosika drops blocks that do not belong,
+shortens text too long for its place, matches unknown icons to its own, and
+lists what it fixed under the design. With no model at all it still lays out
+a sensible screen from your words.
+
+The screens above are drawn from the descriptions in `ui/samples/`, with no
+model: `python ui/render.py ui/samples/*.json` writes them to `ui/out/`.
+Other programs can reuse the parts: `ui_icon(name)`, `ui_tokens_css()` and
+the `ui_render` workflow in `kosika/std/designs_ui.kos`.
+
 ### A flow, and when Kosika shows no photo
 
 ![Photosynthesis](shots/photosynthesis.png)
@@ -145,8 +180,10 @@ diagram, an animated illustration, moving art, or one canvas of all three.
 | `kosika/std/designs_generative.kos` | Moving generative art |
 | `kosika/std/designs_palette.kos` | Holds the palettes and checks their contrast |
 | `kosika/std/designs_paper.kos` | Writes mathematics as a paper and checks each line |
+| `kosika/std/designs_ui.kos` | Designs websites, phone screens, agent windows and artifacts in one design system |
 | `explain.kos` (here) | An agent that answers in words and draws a canvas beside them |
 | `sunflower.kos`, `studio.kos` (here) | Traces and measures a real sunflower photo |
+| `ui.ps1`, `ui/` (here) | Designs a screen from one sentence; sample descriptions and their renderer |
 | `eyes.py` (here) | Finds freely licensed photos on Wikipedia and Wikimedia Commons |
 | `art/` (here) | Hand-made illustrations and their README |
 

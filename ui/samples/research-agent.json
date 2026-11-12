@@ -1,0 +1,19 @@
+{"d": {"ask": {"text": "an agent window for Kosi's research agent, dark", "target": "agent", "theme": "", "accent": ""},
+"spec": {"target": "agent", "title": "Research agent", "brand": "Kosi", "accent": "orange", "theme": "dark", "screens": [{"name": "Research", "blocks": [
+ {"kind": "sidebar", "title": "Kosi", "text": "Free models only. Asks before acting.", "meta": "", "action": "New task", "items": [
+   {"title": "Research", "text": "", "meta": "3", "icon": "spark"}, {"title": "Papers", "text": "", "meta": "128", "icon": "file"}, {"title": "Memory", "text": "", "meta": "", "icon": "layers"}, {"title": "Devices", "text": "", "meta": "2", "icon": "phone"}, {"title": "Settings", "text": "", "meta": "", "icon": "settings"}]},
+ {"kind": "appbar", "title": "What's new in small language models", "text": "Reading this week's papers to suggest improvements to Kosika", "meta": "Running", "action": "Share", "items": [{"title": "", "text": "", "meta": "", "icon": "more"}]},
+ {"kind": "chat", "title": "", "text": "", "meta": "", "action": "", "items": [
+   {"title": "You", "text": "Find this week's papers on small models that reason well, and tell me what Kosika could use.", "meta": "user", "icon": ""},
+   {"title": "Kosi", "text": "I read 14 papers and kept 3 that are measured on tasks like ours. The strongest idea is letting code check each step of a model's plan, which Kosika already does for workflows. I'd test it on the coder benchmark first.", "meta": "agent", "icon": ""},
+   {"title": "You", "text": "Make a plan, but don't change anything yet.", "meta": "user", "icon": ""},
+   {"title": "Kosi", "text": "Plan drafted. Three steps, about two evenings of work. Nothing changes until you say yes.", "meta": "agent", "icon": ""}]},
+ {"kind": "composer", "title": "", "text": "Ask, or give Kosi a task…", "meta": "", "action": "", "items": []},
+ {"kind": "activity", "title": "Plan", "text": "", "meta": "", "action": "", "items": [
+   {"title": "Gather papers from arXiv", "text": "14 found, 3 kept", "meta": "done", "icon": ""},
+   {"title": "Summarise and remember", "text": "Saved to memory", "meta": "done", "icon": ""},
+   {"title": "Draft a plan for Kosika", "text": "Benefits and risks", "meta": "now", "icon": ""},
+   {"title": "Wait for Aryan's yes", "text": "", "meta": "next", "icon": ""}]},
+ {"kind": "stats", "title": "This run", "text": "", "meta": "", "action": "", "items": [{"title": "11", "text": "model calls", "meta": "", "icon": ""}, {"title": "$0", "text": "spent", "meta": "", "icon": ""}]},
+ {"kind": "progress", "title": "Budget", "text": "", "meta": "", "action": "", "items": [{"title": "Model calls", "text": "", "meta": "37%", "icon": ""}, {"title": "Time", "text": "", "meta": "22%", "icon": ""}]}
+]}]}}}

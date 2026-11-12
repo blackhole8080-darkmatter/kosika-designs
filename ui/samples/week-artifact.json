@@ -1,0 +1,10 @@
+{"d": {"ask": {"text": "a summary card artifact of my Kosika week", "target": "artifact", "theme": "", "accent": ""},
+"spec": {"target": "artifact", "title": "Kosika this week", "brand": "Kosika", "accent": "teal", "theme": "light", "screens": [{"name": "Week", "blocks": [
+ {"kind": "appbar", "title": "Your Kosika week", "text": "10 to 16 November · 5 threads, 4 merged pull requests", "meta": "Live", "action": "", "items": []},
+ {"kind": "stats", "title": "", "text": "", "meta": "", "action": "", "items": [{"title": "4", "text": "PRs merged", "meta": "+2", "icon": ""}, {"title": "1,214", "text": "tests passing", "meta": "+38", "icon": ""}, {"title": "5", "text": "new repos", "meta": "", "icon": ""}]},
+ {"kind": "list", "title": "Highlights", "text": "", "meta": "", "action": "", "items": [
+   {"title": "Kosika on your iPhone", "text": "The real engine runs in the browser, online and offline", "meta": "Wed", "icon": "phone"},
+   {"title": "Split into clean repos", "text": "Designs, app, site and examples now stand alone", "meta": "Thu", "icon": "layers"},
+   {"title": "Designs can draw screens", "text": "Websites, phone apps and agent windows", "meta": "Today", "icon": "spark"}]},
+ {"kind": "progress", "title": "Roadmap", "text": "", "meta": "", "action": "", "items": [{"title": "Language", "text": "", "meta": "80%", "icon": ""}, {"title": "Designs", "text": "", "meta": "65%", "icon": ""}, {"title": "Agents everywhere", "text": "", "meta": "30%", "icon": ""}]}
+]}]}}}
