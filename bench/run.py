@@ -1,6 +1,6 @@
 """Score Kosika Designs on a fixed set of 30 asks.
 
-    python examples/agents/designs/bench/run.py [--only a01,a02] [--label note]
+    python bench/run.py [--only a01,a02] [--label note]
 
 Each ask in asks.json says what a person asked and which way of drawing
 suits it. Canvas asks are asked for by name, since a canvas is chosen,
@@ -26,13 +26,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[3]
+# The kosika repo sits next to kosika-designs unless KOSIKA_HOME says otherwise.
+ROOT = Path(os.environ.get("KOSIKA_HOME", HERE.parents[1] / "kosika"))
 sys.path.insert(0, str(ROOT))
 
 from kosika.designs import DesignsError, design  # noqa: E402

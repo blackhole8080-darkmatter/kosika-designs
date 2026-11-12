@@ -9,6 +9,26 @@ Kosika Designs runs on free and open models only, through Groq and
 OpenRouter. Its photos are freely licensed, and each one is credited on the
 page.
 
+
+![A sunflower's seed head, traced and counted](shots/sunflower-fibonacci.jpg)
+
+## Try it
+
+Kosika Designs needs the Kosika language next to it, in one folder:
+
+```text
+git clone https://github.com/blackhole8080-darkmatter/kosika
+git clone https://github.com/blackhole8080-darkmatter/kosika-designs
+cd kosika && python -m pip install . && cd ../kosika-designs
+python -m pip install numpy pillow scipy      # for the photo finder
+.\design.ps1 "how does an LLM work"           # writes design.html
+```
+
+The drawing code itself lives in Kosika's standard library
+(`kosika/std/designs*.kos`). This repo holds the agents that use it, the
+photo finder, the hand-made art, the benchmark and the pictures you see here.
+A free Groq key (`GROQ_API_KEY`) is all it needs to talk to a model.
+
 ## What it draws
 
 ### A cycle, with icons inside its boxes
@@ -130,7 +150,7 @@ diagram, an animated illustration, moving art, or one canvas of all three.
 | `eyes.py` (here) | Finds freely licensed photos on Wikipedia and Wikimedia Commons |
 | `art/` (here) | Hand-made illustrations and their README |
 
-Kosika AI Chat (`examples/apps/chat`) shows these drawings as its answers.
+Kosika AI Chat (in the [kosika-app](https://github.com/blackhole8080-darkmatter/kosika-app) repo) shows these drawings as its answers.
 
 Photos in the screenshots are from Wikimedia Commons, under the licences
 credited on each page.

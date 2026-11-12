@@ -22,7 +22,10 @@ param(
 )
 $ErrorActionPreference = "Stop"
 $here = $PSScriptRoot
-$std = Join-Path $here "..\..\..\kosika\std"
+# The kosika repo sits next to this one (kosika\ and kosika-designs\ in one folder),
+# unless KOSIKA_HOME points somewhere else.
+$kosikaHome = if ($env:KOSIKA_HOME) { $env:KOSIKA_HOME } else { Join-Path $here "..\kosika" }
+$std = Join-Path $kosikaHome "kosika\std"
 $work = Join-Path ([IO.Path]::GetTempPath()) "kosika-designs"
 New-Item -ItemType Directory -Force $work | Out-Null
 $env:KOSIKA_MODEL_API_KEY = [Environment]::GetEnvironmentVariable("GROQ_API_KEY", "User")
