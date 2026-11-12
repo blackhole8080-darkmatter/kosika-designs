@@ -83,9 +83,15 @@ last step gives a recommendation and the reason for it.
 Ask for a screen and Kosika designs it. A model writes only what the screen
 says and which blocks it is made of (a nav, a hero, cards, a list, a chat,
 a tab bar). Kosika checks that description and draws every block itself, in
-one calm, minimal design system: one type scale, one spacing scale, hairline
-borders, soft shadows, one accent and its own line icons. So a small or
-offline model designs as well as a big one, and every design looks finished.
+one design system: one type scale, one spacing scale, one accent with a
+partner colour, and its own line icons. So a small or offline model designs
+as well as a big one, and every design looks finished.
+
+Designs are vivid by default. They use gradients in the two colours, glass
+with a glowing edge, and light that drifts behind the opening. Parts rise in
+as you scroll, numbers count up, and charts (line, area, bar, ring) draw
+themselves. All motion stops when your device asks for reduced motion. Say
+"minimal" in the ask to get the calm, still version.
 
 ```text
 .\ui.ps1 "a landing page for a quiet coffee shop"

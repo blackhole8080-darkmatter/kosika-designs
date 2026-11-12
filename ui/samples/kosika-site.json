@@ -1,26 +1,251 @@
-{"d": {"ask": {"text": "a modern, minimal landing page for Kosika, the AI programming language", "target": "web", "theme": "", "accent": ""},
-"spec": {"target": "web", "title": "Kosika landing page", "brand": "Kosika", "accent": "orange", "theme": "light", "screens": [{"name": "Home", "blocks": [
- {"kind": "nav", "title": "", "text": "", "meta": "", "action": "Get Kosika", "items": [{"title": "Language", "text": "", "meta": "", "icon": ""}, {"title": "Designs", "text": "", "meta": "", "icon": ""}, {"title": "Agents", "text": "", "meta": "", "icon": ""}, {"title": "Docs", "text": "", "meta": "", "icon": ""}]},
- {"kind": "hero", "title": "Write agents the way you think", "text": "Kosika is a small, typed language for AI software. Models suggest, your code decides, and every run is checked and replayable.", "meta": "Kosika 0.9 runs without Python", "action": "Start building|Read the tour", "items": [
-   {"title": "workflow explain(q: Question)", "text": "use_model teacher, then call design", "meta": "typed", "icon": "code"},
-   {"title": "Designs drew the answer", "text": "A canvas, checked by Kosika's own maths", "meta": "0.4 s", "icon": "spark"},
-   {"title": "Asked before changing files", "text": "2 approvals, 0 surprises", "meta": "safe", "icon": "shield"}]},
- {"kind": "features", "title": "Small core, real guarantees", "text": "Everything a model touches is typed, budgeted and written to a trace you can replay.", "meta": "Why Kosika", "action": "", "items": [
-   {"title": "Typed model calls", "text": "Every answer is checked against its record before your code sees it.", "meta": "", "icon": "check"},
-   {"title": "Free models first", "text": "Groq, OpenRouter or a local model, swapped with one flag.", "meta": "", "icon": "cpu"},
-   {"title": "Ask before acting", "text": "Writes, installs and program starts wait for a person's yes.", "meta": "", "icon": "shield"},
-   {"title": "Designs built in", "text": "Any answer can become a diagram, a moving picture or a screen.", "meta": "", "icon": "spark"},
-   {"title": "Two engines", "text": "A Go engine for speed and a Python one for the prototype.", "meta": "", "icon": "layers"},
-   {"title": "Runs everywhere", "text": "Laptop, phone and browser, from the same program.", "meta": "", "icon": "globe"}]},
- {"kind": "stats", "title": "", "text": "", "meta": "", "action": "", "items": [
-   {"title": "16 MB", "text": "the whole engine, in your browser", "meta": "", "icon": ""},
-   {"title": "0", "text": "paid models needed", "meta": "", "icon": ""},
-   {"title": "1,200+", "text": "tests, on Linux and Windows", "meta": "", "icon": ""},
-   {"title": "3", "text": "devices, one agent", "meta": "new", "icon": ""}]},
- {"kind": "steps", "title": "From one line to an agent", "text": "", "meta": "How it works", "action": "", "items": [
-   {"title": "Describe the records", "text": "Say what goes in and what comes out, as types.", "meta": "", "icon": ""},
-   {"title": "Let a model suggest", "text": "use_model fills the record; Kosika checks it.", "meta": "", "icon": ""},
-   {"title": "Let code decide", "text": "Pure functions do the exact work and verify it.", "meta": "", "icon": ""}]},
- {"kind": "cta", "title": "Build your first agent tonight", "text": "Free, open source and MIT licensed. It takes one line to install.", "meta": "", "action": "Get Kosika|View on GitHub", "items": []},
- {"kind": "footer", "title": "", "text": "© 2026 Kosika. MIT licence.", "meta": "", "action": "", "items": [{"title": "GitHub", "text": "", "meta": "", "icon": ""}, {"title": "Docs", "text": "", "meta": "", "icon": ""}, {"title": "Designs", "text": "", "meta": "", "icon": ""}]}
-]}]}}}
+{
+  "d": {
+    "ask": {
+      "text": "a vivid, animated landing page for Kosika, the AI programming language",
+      "target": "web",
+      "theme": "",
+      "accent": ""
+    },
+    "spec": {
+      "target": "web",
+      "title": "Kosika landing page",
+      "brand": "Kosika",
+      "accent": "indigo",
+      "theme": "dark",
+      "screens": [
+        {
+          "name": "Home",
+          "blocks": [
+            {
+              "kind": "nav",
+              "title": "",
+              "text": "",
+              "meta": "",
+              "action": "Get Kosika",
+              "items": [
+                {
+                  "title": "Language",
+                  "text": "",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Designs",
+                  "text": "",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Agents",
+                  "text": "",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Docs",
+                  "text": "",
+                  "meta": "",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "hero",
+              "title": "Write agents the way you think",
+              "text": "Kosika is a small, typed language for AI software. Models suggest, your code decides, and every run is checked and replayable.",
+              "meta": "Kosika 0.9 runs without Python",
+              "action": "Start building|Read the tour",
+              "items": [
+                {
+                  "title": "workflow explain(q: Question)",
+                  "text": "use_model teacher, then call design",
+                  "meta": "typed",
+                  "icon": "code"
+                },
+                {
+                  "title": "Designs drew the answer",
+                  "text": "A canvas, checked by Kosika's own maths",
+                  "meta": "0.4 s",
+                  "icon": "spark"
+                },
+                {
+                  "title": "Asked before changing files",
+                  "text": "2 approvals, 0 surprises",
+                  "meta": "safe",
+                  "icon": "shield"
+                }
+              ]
+            },
+            {
+              "kind": "features",
+              "title": "Small core, real guarantees",
+              "text": "Everything a model touches is typed, budgeted and written to a trace you can replay.",
+              "meta": "Why Kosika",
+              "action": "",
+              "items": [
+                {
+                  "title": "Typed model calls",
+                  "text": "Every answer is checked against its record before your code sees it.",
+                  "meta": "",
+                  "icon": "check"
+                },
+                {
+                  "title": "Free models first",
+                  "text": "Groq, OpenRouter or a local model, swapped with one flag.",
+                  "meta": "",
+                  "icon": "cpu"
+                },
+                {
+                  "title": "Ask before acting",
+                  "text": "Writes, installs and program starts wait for a person's yes.",
+                  "meta": "",
+                  "icon": "shield"
+                },
+                {
+                  "title": "Designs built in",
+                  "text": "Any answer can become a diagram, a moving picture or a screen.",
+                  "meta": "",
+                  "icon": "spark"
+                },
+                {
+                  "title": "Two engines",
+                  "text": "A Go engine for speed and a Python one for the prototype.",
+                  "meta": "",
+                  "icon": "layers"
+                },
+                {
+                  "title": "Runs everywhere",
+                  "text": "Laptop, phone and browser, from the same program.",
+                  "meta": "",
+                  "icon": "globe"
+                }
+              ]
+            },
+            {
+              "kind": "stats",
+              "title": "",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "16 MB",
+                  "text": "the whole engine, in your browser",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "0",
+                  "text": "paid models needed",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "1,200+",
+                  "text": "tests, on Linux and Windows",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "3",
+                  "text": "devices, one agent",
+                  "meta": "new",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "chart",
+              "title": "Small models, real results",
+              "text": "Changes applied correctly out of 15 unseen ones, by Kosika's own coder agents.",
+              "meta": "bar",
+              "action": "",
+              "items": [
+                {
+                  "title": "Free cloud",
+                  "text": "",
+                  "meta": "5",
+                  "icon": ""
+                },
+                {
+                  "title": "kosika-small",
+                  "text": "",
+                  "meta": "12",
+                  "icon": ""
+                },
+                {
+                  "title": "kosika-coder",
+                  "text": "",
+                  "meta": "14",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "steps",
+              "title": "From one line to an agent",
+              "text": "",
+              "meta": "How it works",
+              "action": "",
+              "items": [
+                {
+                  "title": "Describe the records",
+                  "text": "Say what goes in and what comes out, as types.",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Let a model suggest",
+                  "text": "use_model fills the record; Kosika checks it.",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Let code decide",
+                  "text": "Pure functions do the exact work and verify it.",
+                  "meta": "",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "title": "Build your first agent tonight",
+              "text": "Free, open source and MIT licensed. It takes one line to install.",
+              "meta": "",
+              "action": "Get Kosika|View on GitHub",
+              "items": []
+            },
+            {
+              "kind": "footer",
+              "title": "",
+              "text": "© 2026 Kosika. MIT licence.",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "GitHub",
+                  "text": "",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Docs",
+                  "text": "",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Designs",
+                  "text": "",
+                  "meta": "",
+                  "icon": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

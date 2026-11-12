@@ -1,30 +1,347 @@
-{"d": {"ask": {"text": "a mobile app for my study companion: today, a lesson, and a chat with the tutor", "target": "phone", "theme": "", "accent": ""},
-"spec": {"target": "phone", "title": "Study companion", "brand": "Kosi", "accent": "indigo", "theme": "light", "screens": [
- {"name": "Today", "blocks": [
-  {"kind": "appbar", "title": "Today", "text": "Thursday, 13 November", "meta": "", "action": "", "items": [{"title": "", "text": "", "meta": "", "icon": "bell"}, {"title": "", "text": "", "meta": "", "icon": "user"}]},
-  {"kind": "stats", "title": "", "text": "", "meta": "", "action": "", "items": [{"title": "12", "text": "day streak", "meta": "+1", "icon": ""}, {"title": "86%", "text": "quiz average", "meta": "+4%", "icon": ""}]},
-  {"kind": "cards", "title": "Continue", "text": "", "meta": "", "action": "See all", "items": [
-    {"title": "Graph theory", "text": "Euler paths and the handshake lemma", "meta": "12 min left", "icon": "layers"},
-    {"title": "Quantum basics", "text": "Superposition, without the maths", "meta": "New", "icon": "spark"}]},
-  {"kind": "list", "title": "Due soon", "text": "", "meta": "", "action": "", "items": [
-    {"title": "Discrete maths quiz", "text": "Relations and functions", "meta": "Today", "icon": "check"},
-    {"title": "Read: AI safety primer", "text": "Chapter 2, 18 pages", "meta": "Fri", "icon": "book"},
-    {"title": "Proof practice", "text": "Induction, 5 problems", "meta": "Mon", "icon": "file"}]},
-  {"kind": "tabbar", "title": "", "text": "", "meta": "", "action": "", "items": [{"title": "Today", "text": "", "meta": "", "icon": "home"}, {"title": "Learn", "text": "", "meta": "", "icon": "book"}, {"title": "Tutor", "text": "", "meta": "", "icon": "chat"}, {"title": "You", "text": "", "meta": "", "icon": "user"}]}]},
- {"name": "Lesson", "blocks": [
-  {"kind": "appbar", "title": "Graph theory", "text": "Lesson 4 of 9", "meta": "", "action": "", "items": [{"title": "", "text": "", "meta": "", "icon": "back"}, {"title": "", "text": "", "meta": "", "icon": "bookmark"}]},
-  {"kind": "progress", "title": "Your progress", "text": "", "meta": "", "action": "", "items": [{"title": "Lessons", "text": "", "meta": "44%", "icon": ""}, {"title": "Practice", "text": "", "meta": "70%", "icon": ""}]},
-  {"kind": "steps", "title": "Euler paths", "text": "", "meta": "", "action": "", "items": [
-    {"title": "Count the degrees", "text": "Add up the edges at every vertex.", "meta": "", "icon": ""},
-    {"title": "Find the odd ones", "text": "A path exists with 0 or 2 odd vertices.", "meta": "", "icon": ""},
-    {"title": "Start at an odd vertex", "text": "Walk each edge once and end at the other.", "meta": "", "icon": ""}]},
-  {"kind": "cta", "title": "Ready to check yourself?", "text": "Five questions, about four minutes.", "meta": "", "action": "Start the quiz", "items": []}]},
- {"name": "Tutor", "blocks": [
-  {"kind": "appbar", "title": "Tutor", "text": "Kosi, your study companion", "meta": "", "action": "", "items": [{"title": "", "text": "", "meta": "", "icon": "more"}]},
-  {"kind": "chat", "title": "", "text": "", "meta": "", "action": "", "items": [
-    {"title": "You", "text": "Why does a graph need exactly 0 or 2 odd vertices for an Euler path?", "meta": "user", "icon": ""},
-    {"title": "Kosi", "text": "Each time you pass through a vertex you use two edges, one in and one out. Only the start and the end can use an odd number.", "meta": "agent", "icon": ""},
-    {"title": "You", "text": "Can you draw it?", "meta": "user", "icon": ""},
-    {"title": "Kosi", "text": "Here is a small graph with its two odd vertices marked. Tap a step to see it light up.", "meta": "agent", "icon": ""}]},
-  {"kind": "composer", "title": "", "text": "Ask Kosi anything", "meta": "", "action": "", "items": []}]}
-]}}}
+{
+  "d": {
+    "ask": {
+      "text": "a mobile app for my study companion: today, a lesson, and a chat with the tutor",
+      "target": "phone",
+      "theme": "",
+      "accent": ""
+    },
+    "spec": {
+      "target": "phone",
+      "title": "Study companion",
+      "brand": "Kosi",
+      "accent": "indigo",
+      "theme": "dark",
+      "screens": [
+        {
+          "name": "Today",
+          "blocks": [
+            {
+              "kind": "appbar",
+              "title": "Today",
+              "text": "Thursday, 13 November",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "",
+                  "text": "",
+                  "meta": "",
+                  "icon": "bell"
+                },
+                {
+                  "title": "",
+                  "text": "",
+                  "meta": "",
+                  "icon": "user"
+                }
+              ]
+            },
+            {
+              "kind": "stats",
+              "title": "",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "12",
+                  "text": "day streak",
+                  "meta": "+1",
+                  "icon": ""
+                },
+                {
+                  "title": "86%",
+                  "text": "quiz average",
+                  "meta": "+4%",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "chart",
+              "title": "This week",
+              "text": "Minutes of focused study each day.",
+              "meta": "area",
+              "action": "",
+              "items": [
+                {
+                  "title": "Mon",
+                  "text": "",
+                  "meta": "35",
+                  "icon": ""
+                },
+                {
+                  "title": "Tue",
+                  "text": "",
+                  "meta": "50",
+                  "icon": ""
+                },
+                {
+                  "title": "Wed",
+                  "text": "",
+                  "meta": "42",
+                  "icon": ""
+                },
+                {
+                  "title": "Thu",
+                  "text": "",
+                  "meta": "68",
+                  "icon": ""
+                },
+                {
+                  "title": "Fri",
+                  "text": "",
+                  "meta": "55",
+                  "icon": ""
+                },
+                {
+                  "title": "Sat",
+                  "text": "",
+                  "meta": "80",
+                  "icon": ""
+                },
+                {
+                  "title": "Sun",
+                  "text": "",
+                  "meta": "74",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "cards",
+              "title": "Continue",
+              "text": "",
+              "meta": "",
+              "action": "See all",
+              "items": [
+                {
+                  "title": "Graph theory",
+                  "text": "Euler paths and the handshake lemma",
+                  "meta": "12 min left",
+                  "icon": "layers"
+                },
+                {
+                  "title": "Quantum basics",
+                  "text": "Superposition, without the maths",
+                  "meta": "New",
+                  "icon": "spark"
+                }
+              ]
+            },
+            {
+              "kind": "list",
+              "title": "Due soon",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "Discrete maths quiz",
+                  "text": "Relations and functions",
+                  "meta": "Today",
+                  "icon": "check"
+                },
+                {
+                  "title": "Read: AI safety primer",
+                  "text": "Chapter 2, 18 pages",
+                  "meta": "Fri",
+                  "icon": "book"
+                },
+                {
+                  "title": "Proof practice",
+                  "text": "Induction, 5 problems",
+                  "meta": "Mon",
+                  "icon": "file"
+                }
+              ]
+            },
+            {
+              "kind": "tabbar",
+              "title": "",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "Today",
+                  "text": "",
+                  "meta": "",
+                  "icon": "home"
+                },
+                {
+                  "title": "Learn",
+                  "text": "",
+                  "meta": "",
+                  "icon": "book"
+                },
+                {
+                  "title": "Tutor",
+                  "text": "",
+                  "meta": "",
+                  "icon": "chat"
+                },
+                {
+                  "title": "You",
+                  "text": "",
+                  "meta": "",
+                  "icon": "user"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lesson",
+          "blocks": [
+            {
+              "kind": "appbar",
+              "title": "Graph theory",
+              "text": "Lesson 4 of 9",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "",
+                  "text": "",
+                  "meta": "",
+                  "icon": "back"
+                },
+                {
+                  "title": "",
+                  "text": "",
+                  "meta": "",
+                  "icon": "bookmark"
+                }
+              ]
+            },
+            {
+              "kind": "chart",
+              "title": "Topics",
+              "text": "How much of each topic is done.",
+              "meta": "ring",
+              "action": "",
+              "items": [
+                {
+                  "title": "Logic",
+                  "text": "",
+                  "meta": "82%",
+                  "icon": ""
+                },
+                {
+                  "title": "Sets",
+                  "text": "",
+                  "meta": "64%",
+                  "icon": ""
+                },
+                {
+                  "title": "Graphs",
+                  "text": "",
+                  "meta": "38%",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "steps",
+              "title": "Euler paths",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "Count the degrees",
+                  "text": "Add up the edges at every vertex.",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Find the odd ones",
+                  "text": "A path exists with 0 or 2 odd vertices.",
+                  "meta": "",
+                  "icon": ""
+                },
+                {
+                  "title": "Start at an odd vertex",
+                  "text": "Walk each edge once and end at the other.",
+                  "meta": "",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "cta",
+              "title": "Ready to check yourself?",
+              "text": "Five questions, about four minutes.",
+              "meta": "",
+              "action": "Start the quiz",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "Tutor",
+          "blocks": [
+            {
+              "kind": "appbar",
+              "title": "Tutor",
+              "text": "Kosi, your study companion",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "",
+                  "text": "",
+                  "meta": "",
+                  "icon": "more"
+                }
+              ]
+            },
+            {
+              "kind": "chat",
+              "title": "",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "You",
+                  "text": "Why does a graph need exactly 0 or 2 odd vertices for an Euler path?",
+                  "meta": "user",
+                  "icon": ""
+                },
+                {
+                  "title": "Kosi",
+                  "text": "Each time you pass through a vertex you use two edges, one in and one out. Only the start and the end can use an odd number.",
+                  "meta": "agent",
+                  "icon": ""
+                },
+                {
+                  "title": "You",
+                  "text": "Can you draw it?",
+                  "meta": "user",
+                  "icon": ""
+                },
+                {
+                  "title": "Kosi",
+                  "text": "Here is a small graph with its two odd vertices marked. Tap a step to see it light up.",
+                  "meta": "agent",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "composer",
+              "title": "",
+              "text": "Ask Kosi anything",
+              "meta": "",
+              "action": "",
+              "items": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
