@@ -178,6 +178,20 @@ where `app.json` holds `{"m": {"text": "a phone app to plan my revision week", "
 
 ![An agent window as an app](shots/ui/app-agent.jpg)
 
+#### Prototypes you can tap through
+
+A design can have several screens: up to five phone screens, three web
+pages, two agent windows or cards. They link like a prototype. A button, a
+card title, a row title or a nav link that ends with ` > ` and a screen's
+name opens that screen, so `Start the quiz > Tutor` shows a button that
+says "Start the quiz" and opens Tutor. A label that is a screen's name
+links there too, and tab bars open the screens of the same names. In the
+app the new screen slides in, and Back (or the design's own back icon, or
+the phone's swipe back) returns. `ui/samples/study-prototype.json` and
+`ui/samples/kite-festival-prototype.json` are examples.
+
+![A study app and a festival site, tapped through screen by screen](shots/ui/prototype.jpg)
+
 ### A flow, and when Kosika shows no photo
 
 ![Photosynthesis](shots/photosynthesis.png)
