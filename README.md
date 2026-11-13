@@ -148,6 +148,36 @@ Designs too, inside the chat:
 On a narrow screen the sidebar and panel fold away, so the same window
 works on a phone.
 
+#### Designs that become apps
+
+Any design can become an app of its own, with no server behind it.
+`design_app` takes one sentence; `ui_make_app` takes a design you already
+have. Kosika adds what makes every part work: the tab bar switches screens,
+lists and cards take new items and remember what is done or removed, forms
+check what you type and keep it, search and the chips filter, the chat keeps
+its messages, steps move on and bars are set with a tap, and a plan can be
+chosen. It is all kept on the device, so the app works offline.
+
+It comes as four files: `index.html`, `manifest.webmanifest`, `sw.js` and
+`icon.svg`. Serve the folder, or put it on GitHub Pages, and open it. On an
+iPhone, tap Share, then Add to Home Screen, and it opens full screen like
+any other app, even with no connection.
+
+`ui/apps/make_app.kos` does it in one step. It asks you before it writes
+the files:
+
+```text
+kosika run ui/apps/make_app.kos --workflow make_app --input app.json --allow-folder apps --approve --model openai/gpt-oss-120b --model-url https://api.groq.com/openai/v1 --model-protocol openai
+```
+
+where `app.json` holds `{"m": {"text": "a phone app to plan my revision week", "target": ""}}`.
+
+![A study app: adding to a list, marking it done, the tutor screen](shots/ui/app-study.jpg)
+
+![The kite festival site as an app](shots/ui/app-kite.jpg)
+
+![An agent window as an app](shots/ui/app-agent.jpg)
+
 ### A flow, and when Kosika shows no photo
 
 ![Photosynthesis](shots/photosynthesis.png)
