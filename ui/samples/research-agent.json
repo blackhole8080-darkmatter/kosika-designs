@@ -12,6 +12,15 @@
       "brand": "Kosi",
       "accent": "orange",
       "theme": "dark",
+      "look": {
+        "colours": [
+          "#ff7a45",
+          "#ff4d8d"
+        ],
+        "shape": "sharp",
+        "art": "waves",
+        "font": "mono"
+      },
       "screens": [
         {
           "name": "Research",

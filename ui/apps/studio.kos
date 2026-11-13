@@ -58,7 +58,7 @@ fn st_block(kind: Text, title: Text, text: Text, meta: Text, action: Text, items
 }
 
 fn st_spec(theme: Text) -> UiSpec {
-  return {target: "agent", title: "Designs Studio", brand: "Kosika Designs", accent: "orange", theme: if theme == "light" { "light" } else { "dark" }, screens: [{name: "Studio", blocks: [
+  return {target: "agent", title: "Designs Studio", brand: "Kosika Designs", accent: "orange", theme: if theme == "light" { "light" } else { "dark" }, look: {colours: [], shape: "soft", art: "aurora", font: "grotesk"}, screens: [{name: "Studio", blocks: [
     st_block("sidebar", "Kosika Designs", "Free models only. Every drawing checked.", "", "New design", [st_item("Studio", "", "", "spark"), st_item("Screens", "", "", "grid"), st_item("Diagrams", "", "", "layers"), st_item("Science", "", "", "leaf"), st_item("Palettes", "", "", "image")]),
     st_block("appbar", "Design anything", "A website, a phone app, an agent window, a diagram, or how something works", "Ready", "", []),
     st_block("chat", "", "", "", "", [st_item("Kosika Designs", "Tell me what to design. Try: a landing page for a quiet coffee shop, a phone app for learning Japanese, or how does the heart pump blood.", "agent", "")]),

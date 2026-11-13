@@ -12,6 +12,15 @@
       "brand": "Kosika",
       "accent": "teal",
       "theme": "dark",
+      "look": {
+        "colours": [
+          "#2dd4bf",
+          "#a3e635"
+        ],
+        "shape": "soft",
+        "art": "prism",
+        "font": "editorial"
+      },
       "screens": [
         {
           "name": "Week",

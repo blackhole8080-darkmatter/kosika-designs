@@ -93,6 +93,16 @@ as you scroll, numbers count up, and charts (line, area, bar, ring) draw
 themselves. All motion stops when your device asks for reduced motion. Say
 "minimal" in the ask to get the calm, still version.
 
+The model also chooses the look: its own colours, which Kosika keeps
+readable, the shape of things, the type, and the moving art behind the
+design (orbits, blobs, waves, constellation, prism, rings, grid, aurora).
+The art is drawn fresh from the words of the ask, so no two designs are
+alike. An art block lets it compose its own moving shapes too.
+
+![A kite festival website with its own colours, type and moving shapes](shots/ui/kite-festival.jpg)
+
+![An AI interface for thinking out loud](shots/ui/ai-interface.jpg)
+
 ```text
 .\ui.ps1 "a landing page for a quiet coffee shop"
 ```

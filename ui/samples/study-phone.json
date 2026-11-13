@@ -12,6 +12,15 @@
       "brand": "Kosi",
       "accent": "indigo",
       "theme": "dark",
+      "look": {
+        "colours": [
+          "#8b7bff",
+          "#ffb547"
+        ],
+        "shape": "round",
+        "art": "blobs",
+        "font": "rounded"
+      },
       "screens": [
         {
           "name": "Today",

@@ -12,6 +12,12 @@
       "brand": "Kosika",
       "accent": "indigo",
       "theme": "dark",
+      "look": {
+        "colours": [],
+        "shape": "soft",
+        "art": "constellation",
+        "font": "grotesk"
+      },
       "screens": [
         {
           "name": "Home",
