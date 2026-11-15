@@ -1,0 +1,202 @@
+{
+  "d": {
+    "ask": {
+      "text": "an AI interface for thinking out loud with a model, something new",
+      "target": "",
+      "theme": "",
+      "accent": ""
+    },
+    "spec": {
+      "target": "agent",
+      "title": "Thinking space",
+      "brand": "Lumen",
+      "accent": "",
+      "theme": "dark",
+      "look": {
+        "colours": [
+          "#7df9ff",
+          "#c084fc"
+        ],
+        "shape": "pill",
+        "art": "aurora",
+        "font": "grotesk"
+      },
+      "screens": [
+        {
+          "name": "Thinking space",
+          "blocks": [
+            {
+              "kind": "sidebar",
+              "title": "Lumen",
+              "text": "Thinks with you, asks before acting.",
+              "meta": "",
+              "action": "New thought",
+              "items": [
+                {
+                  "title": "Now",
+                  "text": "",
+                  "meta": "",
+                  "icon": "spark"
+                },
+                {
+                  "title": "Threads",
+                  "text": "",
+                  "meta": "12",
+                  "icon": "chat"
+                },
+                {
+                  "title": "Ideas",
+                  "text": "",
+                  "meta": "",
+                  "icon": "layers"
+                },
+                {
+                  "title": "Sources",
+                  "text": "",
+                  "meta": "34",
+                  "icon": "book"
+                },
+                {
+                  "title": "Settings",
+                  "text": "",
+                  "meta": "",
+                  "icon": "settings"
+                }
+              ]
+            },
+            {
+              "kind": "appbar",
+              "title": "Why do cities feel faster at night",
+              "text": "Thinking out loud, three angles so far",
+              "meta": "Thinking",
+              "action": "",
+              "items": []
+            },
+            {
+              "kind": "chat",
+              "title": "",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "You",
+                  "text": "Why do cities feel faster at night? Same streets, same speed limits.",
+                  "meta": "user",
+                  "icon": ""
+                },
+                {
+                  "title": "Lumen",
+                  "text": "Three ideas fit together. Fewer cars means the speeds people actually drive go up. Lights streak past and the eye reads that as speed. And with less to look at, time is measured by fewer landmarks, so it feels compressed.",
+                  "meta": "agent",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "art",
+              "title": "Three ideas, drawn",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "circle",
+                  "text": "accent",
+                  "meta": "0.25 0.5 0.16",
+                  "icon": "pulse"
+                },
+                {
+                  "title": "hexagon",
+                  "text": "partner",
+                  "meta": "0.5 0.45 0.2",
+                  "icon": "spin"
+                },
+                {
+                  "title": "star7",
+                  "text": "#fde68a",
+                  "meta": "0.75 0.5 0.15",
+                  "icon": "sway"
+                },
+                {
+                  "title": "wave",
+                  "text": "accent",
+                  "meta": "0.5 0.82 0.12",
+                  "icon": "float"
+                },
+                {
+                  "title": "ring",
+                  "text": "partner",
+                  "meta": "0.5 0.45 0.32",
+                  "icon": "spin"
+                }
+              ]
+            },
+            {
+              "kind": "composer",
+              "title": "",
+              "text": "Think out loud…",
+              "meta": "",
+              "action": "",
+              "items": []
+            },
+            {
+              "kind": "activity",
+              "title": "Reasoning",
+              "text": "",
+              "meta": "",
+              "action": "",
+              "items": [
+                {
+                  "title": "Split the question",
+                  "text": "Traffic, light, attention",
+                  "meta": "done",
+                  "icon": ""
+                },
+                {
+                  "title": "Check each against data",
+                  "text": "2 of 3 checked",
+                  "meta": "now",
+                  "icon": ""
+                },
+                {
+                  "title": "Draw how they connect",
+                  "text": "",
+                  "meta": "next",
+                  "icon": ""
+                }
+              ]
+            },
+            {
+              "kind": "chart",
+              "title": "Confidence",
+              "text": "How sure Lumen is of each idea.",
+              "meta": "ring",
+              "action": "",
+              "items": [
+                {
+                  "title": "Traffic",
+                  "text": "",
+                  "meta": "82%",
+                  "icon": ""
+                },
+                {
+                  "title": "Light",
+                  "text": "",
+                  "meta": "64%",
+                  "icon": ""
+                },
+                {
+                  "title": "Attention",
+                  "text": "",
+                  "meta": "41%",
+                  "icon": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

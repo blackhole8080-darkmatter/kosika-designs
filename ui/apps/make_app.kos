@@ -1,0 +1,60 @@
+// Make an app: one sentence in, a working app out, written to a folder you
+// granted, ready to open, install on a phone, or publish.
+//
+//   kosika-native run ui/apps/make_app.kos --workflow make_app --input app.json
+//       --allow-folder apps --model openai/gpt-oss-120b
+//       --model-url https://api.groq.com/openai/v1 --model-protocol openai
+//       --max-output-tokens 8000
+//
+// where app.json holds
+//   {"m": {"text": "a phone app to plan my revision week", "target": ""}}
+//
+// The model designs it (designs_ui.kos); Kosika checks it and makes it
+// work: tab bars switch screens, lists and cards take new items, forms
+// check and keep what is sent, search and chips filter, chat keeps its
+// messages, and everything is kept on the device, so it works offline.
+// It writes apps/NAME/ with index.html, manifest.webmanifest, sw.js and
+// icon.svg, and asks you first: one approval covers exactly those files.
+//
+// To open it: serve the folder (python -m http.server, or kosika-site's
+// GitHub Pages) and open NAME/. On an iPhone, Share, then Add to Home
+// Screen, and it opens full screen like any app, even with no connection.
+
+import "std/designs_ui.kos"
+
+record MakeAsk { text: Text target: Text }
+record MaFile { path: Text text: Text before: Text exists: Bool }
+record Batch { files: MaFile[] note: Text }
+record Saved { count: Number }
+record MadeApp { title: Text name: Text files: Text[] written: Number fixed: Text[] problems: Text[] }
+
+tool save_all {
+  source system "files"
+  operation: "write_all"
+  access: execute
+  input: Batch
+  output: Saved
+}
+
+agent maker {
+  can: [save_all]
+  max_steps: 1
+}
+
+fn ma_file(name: Text, f: UiFile) -> MaFile { return {path: name + "/" + f.path, text: f.text, before: "", exists: false} }
+
+fn ma_batch(a: UiAppMade) -> Batch {
+  return {files: for f in a.files { ma_file(a.slug, f) }, note: f"The app {a.title}, made by Kosika Designs: {a.files.length()} files in {a.slug}/."}
+}
+
+fn ma_done(a: UiAppMade, saved: Saved) -> MadeApp {
+  return {title: a.title, name: a.slug, files: for f in a.files { a.slug + "/" + f.path }, written: saved.count, fixed: a.fixed, problems: a.problems}
+}
+
+workflow make_app(m: MakeAsk) -> MadeApp {
+  require approval
+  made  = call design_app({text: m.text, target: m.target, theme: "", accent: ""})
+  batch = ma_batch(made)
+  saved = execute maker.save_all(batch.files, batch.note)
+  out   = ma_done(made, saved)
+}

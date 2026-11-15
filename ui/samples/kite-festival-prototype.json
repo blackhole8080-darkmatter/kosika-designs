@@ -1,0 +1,492 @@
+{
+ "d": {
+  "ask": {
+   "text": "a website for a kite festival on the beach, playful and new",
+   "target": "",
+   "theme": "",
+   "accent": ""
+  },
+  "spec": {
+   "target": "web",
+   "title": "Kite festival",
+   "brand": "Windfall",
+   "accent": "",
+   "theme": "light",
+   "look": {
+    "colours": [
+     "#ff4d4d",
+     "#0077b6"
+    ],
+    "shape": "round",
+    "art": "rings",
+    "font": "editorial"
+   },
+   "screens": [
+    {
+     "name": "Festival",
+     "blocks": [
+      {
+       "kind": "nav",
+       "title": "",
+       "text": "",
+       "meta": "",
+       "action": "Get tickets > Tickets",
+       "items": [
+        {
+         "title": "Programme",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Flyers",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Getting there",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        }
+       ]
+      },
+      {
+       "kind": "hero",
+       "title": "Three days of colour above the sea",
+       "text": "The biggest kite gathering on the coast. Bring a kite, or borrow one of ours on the beach.",
+       "meta": "14 to 16 August",
+       "action": "Get tickets > Tickets|See the programme > Programme",
+       "items": []
+      },
+      {
+       "kind": "art",
+       "title": "What fills the sky",
+       "text": "",
+       "meta": "",
+       "action": "",
+       "items": [
+        {
+         "title": "diamond",
+         "text": "accent",
+         "meta": "0.14 0.35 0.13",
+         "icon": "sway"
+        },
+        {
+         "title": "triangle",
+         "text": "partner",
+         "meta": "0.3 0.6 0.12",
+         "icon": "float"
+        },
+        {
+         "title": "star",
+         "text": "#ffb703",
+         "meta": "0.47 0.3 0.14",
+         "icon": "spin"
+        },
+        {
+         "title": "hexagon",
+         "text": "#2a9d8f",
+         "meta": "0.63 0.58 0.12",
+         "icon": "float"
+        },
+        {
+         "title": "diamond",
+         "text": "partner",
+         "meta": "0.8 0.32 0.15",
+         "icon": "sway"
+        },
+        {
+         "title": "spiral",
+         "text": "accent",
+         "meta": "0.93 0.7 0.08",
+         "icon": "spin"
+        },
+        {
+         "title": "wave",
+         "text": "#0077b6",
+         "meta": "0.5 0.9 0.14",
+         "icon": "float"
+        }
+       ]
+      },
+      {
+       "kind": "stats",
+       "title": "",
+       "text": "",
+       "meta": "",
+       "action": "",
+       "items": [
+        {
+         "title": "420",
+         "text": "kites last year",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "38",
+         "text": "countries",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "3",
+         "text": "days",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "0",
+         "text": "tickets for children",
+         "meta": "",
+         "icon": ""
+        }
+       ]
+      },
+      {
+       "kind": "chart",
+       "title": "Best wind",
+       "text": "Average wind on the beach by hour, in km/h.",
+       "meta": "area",
+       "action": "",
+       "items": [
+        {
+         "title": "9:00",
+         "text": "",
+         "meta": "12",
+         "icon": ""
+        },
+        {
+         "title": "11:00",
+         "text": "",
+         "meta": "17",
+         "icon": ""
+        },
+        {
+         "title": "13:00",
+         "text": "",
+         "meta": "24",
+         "icon": ""
+        },
+        {
+         "title": "15:00",
+         "text": "",
+         "meta": "28",
+         "icon": ""
+        },
+        {
+         "title": "17:00",
+         "text": "",
+         "meta": "22",
+         "icon": ""
+        },
+        {
+         "title": "19:00",
+         "text": "",
+         "meta": "15",
+         "icon": ""
+        }
+       ]
+      },
+      {
+       "kind": "cards",
+       "title": "Flyers to watch",
+       "text": "",
+       "meta": "",
+       "action": "All flyers",
+       "items": [
+        {
+         "title": "The night kites",
+         "text": "LED kites over the water after dark.",
+         "meta": "Sat 21:00",
+         "icon": "moon"
+        },
+        {
+         "title": "Giant octopus",
+         "text": "A 30 metre kite from Japan.",
+         "meta": "Sun 14:00",
+         "icon": "star"
+        },
+        {
+         "title": "Kite school",
+         "text": "Learn to fly in twenty minutes.",
+         "meta": "Every day",
+         "icon": "book"
+        }
+       ]
+      },
+      {
+       "kind": "cta",
+       "title": "The sky is booked for August",
+       "text": "Tickets are free for children under twelve.",
+       "meta": "",
+       "action": "Get tickets > Tickets",
+       "items": []
+      },
+      {
+       "kind": "footer",
+       "title": "",
+       "text": "",
+       "meta": "",
+       "action": "",
+       "items": [
+        {
+         "title": "Accessibility",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Contact",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Press",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Programme",
+     "blocks": [
+      {
+       "kind": "nav",
+       "title": "",
+       "text": "",
+       "meta": "",
+       "action": "Get tickets > Tickets",
+       "items": [
+        {
+         "title": "Festival",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Programme",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Flyers",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Getting there",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        }
+       ]
+      },
+      {
+       "kind": "hero",
+       "title": "Three days, hour by hour",
+       "text": "Every flight, workshop and night show on the beach.",
+       "meta": "14 to 16 August",
+       "action": "Get tickets > Tickets",
+       "items": []
+      },
+      {
+       "kind": "list",
+       "title": "Saturday",
+       "text": "",
+       "meta": "",
+       "action": "",
+       "items": [
+        {
+         "title": "Giant kite parade",
+         "text": "The big ones go up together, weather permitting.",
+         "meta": "10:00",
+         "icon": "star"
+        },
+        {
+         "title": "Make your own kite",
+         "text": "Bamboo and paper, for ages 6 and up. Bring nothing.",
+         "meta": "11:30",
+         "icon": "spark"
+        },
+        {
+         "title": "Stunt kite duels",
+         "text": "Two-line kites, judged by the crowd.",
+         "meta": "14:00",
+         "icon": "bolt"
+        },
+        {
+         "title": "Night flight",
+         "text": "Kites with lights over the water.",
+         "meta": "21:30",
+         "icon": "moon"
+        }
+       ]
+      },
+      {
+       "kind": "cta",
+       "title": "Your weekend on the wind",
+       "text": "Day passes from £12, children free.",
+       "meta": "",
+       "action": "Get tickets > Tickets",
+       "items": []
+      },
+      {
+       "kind": "footer",
+       "title": "",
+       "text": "",
+       "meta": "",
+       "action": "",
+       "items": [
+        {
+         "title": "Accessibility",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Contact",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Press",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Tickets",
+     "blocks": [
+      {
+       "kind": "nav",
+       "title": "",
+       "text": "",
+       "meta": "",
+       "action": "Get tickets > Tickets",
+       "items": [
+        {
+         "title": "Festival",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Programme",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Flyers",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Getting there",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        }
+       ]
+      },
+      {
+       "kind": "pricing",
+       "title": "Choose your pass",
+       "text": "Children under 12 fly free.",
+       "meta": "Tickets",
+       "action": "Buy",
+       "items": [
+        {
+         "title": "Day pass",
+         "text": "One day on the beach;Workshops on the day;Night flight",
+         "meta": "£12",
+         "icon": ""
+        },
+        {
+         "title": "Weekend",
+         "text": "All three days;Every workshop;Night flights;Parade spot",
+         "meta": "£29",
+         "icon": ""
+        },
+        {
+         "title": "Family",
+         "text": "Two adults and up to three children;All three days",
+         "meta": "£64",
+         "icon": ""
+        }
+       ]
+      },
+      {
+       "kind": "form",
+       "title": "Reserve your passes",
+       "text": "We will hold them for 48 hours.",
+       "meta": "Pay on the day at the gate, or by card when you come.",
+       "action": "Reserve",
+       "items": [
+        {
+         "title": "Name",
+         "text": "Alex Morgan",
+         "meta": "",
+         "icon": "user"
+        },
+        {
+         "title": "Email",
+         "text": "alex@example.com",
+         "meta": "",
+         "icon": "mail"
+        },
+        {
+         "title": "Number of people",
+         "text": "2",
+         "meta": "",
+         "icon": "users"
+        }
+       ]
+      },
+      {
+       "kind": "footer",
+       "title": "",
+       "text": "",
+       "meta": "",
+       "action": "",
+       "items": [
+        {
+         "title": "Accessibility",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Contact",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        },
+        {
+         "title": "Press",
+         "text": "",
+         "meta": "",
+         "icon": ""
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

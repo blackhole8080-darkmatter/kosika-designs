@@ -78,6 +78,120 @@ between" and "should I learn Rust or Go". Each row is named on the left and
 sized to fit its longest cell. When the question asks which to choose, the
 last step gives a recommendation and the reason for it.
 
+### Any screen: a website, a phone app, an agent window
+
+Ask for a screen and Kosika designs it. A model writes only what the screen
+says and which blocks it is made of (a nav, a hero, cards, a list, a chat,
+a tab bar). Kosika checks that description and draws every block itself, in
+one design system: one type scale, one spacing scale, one accent with a
+partner colour, and its own line icons. So a small or offline model designs
+as well as a big one, and every design looks finished.
+
+Designs are vivid by default. They use gradients in the two colours, glass
+with a glowing edge, and light that drifts behind the opening. Parts rise in
+as you scroll, numbers count up, and charts (line, area, bar, ring) draw
+themselves. All motion stops when your device asks for reduced motion. Say
+"minimal" in the ask to get the calm, still version.
+
+The model also chooses the look: its own colours, which Kosika keeps
+readable, the shape of things, the type, and the moving art behind the
+design (orbits, blobs, waves, constellation, prism, rings, grid, aurora).
+The art is drawn fresh from the words of the ask, so no two designs are
+alike. An art block lets it compose its own moving shapes too.
+
+![A kite festival website with its own colours, type and moving shapes](shots/ui/kite-festival.jpg)
+
+![An AI interface for thinking out loud](shots/ui/ai-interface.jpg)
+
+```text
+.\ui.ps1 "a landing page for a quiet coffee shop"
+```
+
+![A landing page for Kosika](shots/ui/kosika-site.jpg)
+
+![Three phone screens for a study companion](shots/ui/study-phone.jpg)
+
+![An agent window for a research agent, in dark](shots/ui/research-agent.jpg)
+
+![A summary card artifact](shots/ui/week-artifact.jpg)
+
+Four targets: **web** (in a browser window, responsive), **phone** (one to
+three screens side by side), **agent** (sidebar, conversation and a live
+panel) and **artifact** (one card). The words of the ask choose the target,
+the theme (light unless you say dark) and the accent (ten, each checked for
+WCAG contrast in light and dark). Kosika drops blocks that do not belong,
+shortens text too long for its place, matches unknown icons to its own, and
+lists what it fixed under the design. With no model at all it still lays out
+a sensible screen from your words.
+
+The screens above are drawn from the descriptions in `ui/samples/`, with no
+model: `python ui/render.py ui/samples/*.json` writes them to `ui/out/`.
+Other programs can reuse the parts: `ui_icon(name)`, `ui_tokens_css()` and
+the `ui_render` workflow in `kosika/std/designs_ui.kos`.
+
+#### Designs that run
+
+A design can also be the real window of a program. `ui_app` takes a design
+and binds its parts to workflows. The place you type sends to one workflow,
+and the plan, the numbers and the lists fill in from the answers.
+`kosika-native serve PROGRAM.kos --page PAGE.html` shows the window and
+runs those workflows. Designs Studio (`ui/apps/studio.kos`) is built this
+way. Its window was drawn by Designs, and whatever you ask it is drawn by
+Designs too, inside the chat:
+
+```text
+.\ui\apps\studio.ps1
+```
+
+![Designs Studio, live](shots/ui/studio-live.jpg)
+
+On a narrow screen the sidebar and panel fold away, so the same window
+works on a phone.
+
+#### Designs that become apps
+
+Any design can become an app of its own, with no server behind it.
+`design_app` takes one sentence; `ui_make_app` takes a design you already
+have. Kosika adds what makes every part work: the tab bar switches screens,
+lists and cards take new items and remember what is done or removed, forms
+check what you type and keep it, search and the chips filter, the chat keeps
+its messages, steps move on and bars are set with a tap, and a plan can be
+chosen. It is all kept on the device, so the app works offline.
+
+It comes as four files: `index.html`, `manifest.webmanifest`, `sw.js` and
+`icon.svg`. Serve the folder, or put it on GitHub Pages, and open it. On an
+iPhone, tap Share, then Add to Home Screen, and it opens full screen like
+any other app, even with no connection.
+
+`ui/apps/make_app.kos` does it in one step. It asks you before it writes
+the files:
+
+```text
+kosika run ui/apps/make_app.kos --workflow make_app --input app.json --allow-folder apps --approve --model openai/gpt-oss-120b --model-url https://api.groq.com/openai/v1 --model-protocol openai
+```
+
+where `app.json` holds `{"m": {"text": "a phone app to plan my revision week", "target": ""}}`.
+
+![A study app: adding to a list, marking it done, the tutor screen](shots/ui/app-study.jpg)
+
+![The kite festival site as an app](shots/ui/app-kite.jpg)
+
+![An agent window as an app](shots/ui/app-agent.jpg)
+
+#### Prototypes you can tap through
+
+A design can have several screens: up to five phone screens, three web
+pages, two agent windows or cards. They link like a prototype. A button, a
+card title, a row title or a nav link that ends with ` > ` and a screen's
+name opens that screen, so `Start the quiz > Tutor` shows a button that
+says "Start the quiz" and opens Tutor. A label that is a screen's name
+links there too, and tab bars open the screens of the same names. In the
+app the new screen slides in, and Back (or the design's own back icon, or
+the phone's swipe back) returns. `ui/samples/study-prototype.json` and
+`ui/samples/kite-festival-prototype.json` are examples.
+
+![A study app and a festival site, tapped through screen by screen](shots/ui/prototype.jpg)
+
 ### A flow, and when Kosika shows no photo
 
 ![Photosynthesis](shots/photosynthesis.png)
@@ -145,8 +259,10 @@ diagram, an animated illustration, moving art, or one canvas of all three.
 | `kosika/std/designs_generative.kos` | Moving generative art |
 | `kosika/std/designs_palette.kos` | Holds the palettes and checks their contrast |
 | `kosika/std/designs_paper.kos` | Writes mathematics as a paper and checks each line |
+| `kosika/std/designs_ui.kos` | Designs websites, phone screens, agent windows and artifacts in one design system |
 | `explain.kos` (here) | An agent that answers in words and draws a canvas beside them |
 | `sunflower.kos`, `studio.kos` (here) | Traces and measures a real sunflower photo |
+| `ui.ps1`, `ui/` (here) | Designs a screen from one sentence; sample descriptions, their renderer, and Designs Studio (`ui/apps/`), a window that runs |
 | `eyes.py` (here) | Finds freely licensed photos on Wikipedia and Wikimedia Commons |
 | `art/` (here) | Hand-made illustrations and their README |
 
