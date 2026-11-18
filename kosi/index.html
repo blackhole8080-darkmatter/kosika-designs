@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kosi Voice Orb</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: the Kosika maths-drawing look. Eyebrow + serif title + formula top-left, white-line orb on a perspective floor in the middle, conversation and controls at the bottom. Single dark theme by choice. */
+:root {
+  --ground: #07080c;
+  --white: #f1eee6;
+  --dim: #8e8c96;
+  --faint: rgba(241,238,230,.14);
+  --amber: #f5b13d;
+  --serif: "STIX Two Text", "Times New Roman", Georgia, serif;
+  --sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { background: var(--ground); color: var(--white); font-family: var(--sans); overflow: hidden; }
+#stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+#stage:active { cursor: grabbing; }
+.hud {
+  position: fixed; inset: 0; pointer-events: none; display: grid; grid-template-rows: auto 1fr auto;
+  padding-block: max(22px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--amber); }
+h1 { margin: 6px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 4vw, 40px); line-height: 1.1; }
+.formula { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--faint); font-family: var(--serif); font-style: italic; font-size: clamp(15px, 1.8vw, 19px); color: var(--white); opacity: .9; max-width: 34em; }
+.readout { font-family: var(--mono); font-size: 11px; color: var(--dim); text-align: right; line-height: 1.8; letter-spacing: .06em; }
+.readout b { color: var(--white); font-weight: 400; }
+.meter { display: inline-block; width: 64px; height: 2px; background: var(--faint); vertical-align: middle; }
+.meter i { display: block; height: 100%; width: 0; background: var(--amber); }
+.mid { display: grid; place-items: end center; padding-bottom: 10px; }
+.caption { min-height: 3.5em; max-width: 52ch; text-align: center; font-size: clamp(15px, 1.9vw, 17px); line-height: 1.5; color: var(--white); }
+.caption .who { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin-bottom: 4px; }
+.caption .who.kosi { color: var(--amber); }
+.caption .cursor { display: inline-block; width: .45ch; background: var(--amber); animation: blink 1s steps(2) infinite; margin-left: 1px; }
+@keyframes blink { 50% { opacity: 0; } }
+.bottom { display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: auto; }
+.talk { display: flex; align-items: center; gap: 10px; width: min(560px, 100%); }
+.mic { flex: none; width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--faint); background: var(--ground); color: var(--white); cursor: pointer; display: grid; place-items: center; }
+.mic svg { width: 22px; height: 22px; }
+.mic:hover { border-color: var(--amber); }
+.mic[aria-pressed="true"] { border-color: var(--amber); color: var(--amber); box-shadow: 0 0 0 4px rgba(245,177,61,.14); }
+.mic[hidden] { display: none; }
+form.ask { flex: 1; min-width: 0; display: flex; gap: 8px; border: 1px solid var(--faint); border-radius: 999px; padding: 5px 5px 5px 16px; background: rgba(7,8,12,.8); }
+form.ask input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--white); font: 15px var(--sans); outline: none; }
+form.ask input::placeholder { color: var(--dim); }
+form.ask button { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #140e02; background: var(--amber); border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+.row { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.row button, .row label { font-family: var(--mono); font-size: 11px; color: var(--dim); background: var(--ground); border: 1px solid var(--faint); padding: 6px 12px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; }
+.row button[aria-pressed="true"] { color: var(--white); border-color: rgba(241,238,230,.6); }
+.row button#b-auto[aria-pressed="true"] { border-color: var(--amber); color: var(--amber); }
+.row input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+button:focus-visible, .row label:focus-within, form.ask:focus-within { outline: 2px solid var(--amber); outline-offset: 2px; }
+.note { font-family: var(--mono); font-size: 10.5px; color: var(--dim); text-align: center; }
+@media (max-width: 560px) { .readout { display: none; } .row button, .row label { padding: 5px 9px; font-size: 10px; } }
+@media (max-height: 640px) { .formula, .note { display: none; } }
+</style>
+</head><body>
+
+<canvas id="stage" aria-label="Kosi drawn as a white-line 3D cell. Drag to turn it."></canvas>
+<div class="hud">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Kosika Designs · Kosi</div>
+      <h1 id="title">Kosi, resting</h1>
+      <div class="formula" id="formula">r(θ, φ) = 1 + 0.015 · sin(1.2 t)</div>
+    </div>
+    <div class="readout" aria-live="polite">
+      state <b id="r-state">idle</b><br>
+      voice <span class="meter"><i id="r-meter"></i></span><br>
+      form <b id="r-lines">0</b><br>
+      ears <b id="r-ears">…</b> · voice <b id="r-voice">…</b>
+    </div>
+  </div>
+  <div class="mid"><div class="caption" id="caption" aria-live="polite"></div></div>
+  <div class="bottom">
+    <div class="talk">
+      <button class="mic" id="mic" aria-pressed="false" aria-label="Talk to Kosi" title="Talk to Kosi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+      </button>
+      <form class="ask" id="ask">
+        <input id="ask-text" type="text" placeholder="Ask Kosi something…" autocomplete="off" aria-label="Message for Kosi">
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div class="row" role="group" aria-label="Form">
+      <button data-form="cell" aria-pressed="true">Cell</button>
+      <button data-form="geodesic">Geodesic</button>
+      <button data-form="revolved">Revolved</button>
+    </div>
+    <div class="row" role="group" aria-label="Body shape">
+      <button data-shape="sphere" aria-pressed="true">Sphere</button>
+      <button data-shape="amoeba">Amoeba</button>
+      <button data-shape="virus">Spiked</button>
+      <button data-shape="torus">Torus</button>
+      <button data-shape="cube">Cube</button>
+      <button data-shape="twist">Twist</button>
+      <button data-shape="seed">Seed</button>
+      <button id="b-wander" aria-pressed="true">Shape-shift</button>
+    </div>
+    <div class="row" role="group" aria-label="Preview a state">
+      <button data-state="0">Idle</button>
+      <button data-state="1">Listening</button>
+      <button data-state="2">Thinking</button>
+      <button data-state="3">Speaking</button>
+      <button id="b-auto" aria-pressed="true">Auto demo</button>
+      <label for="f-audio">Audio file<input id="f-audio" type="file" accept="audio/*"></label>
+    </div>
+    <div class="note">drag to turn · keys 1–4 preview states</div>
+  </div>
+</div>
+
+<script src="kosi-cell.js"></script>
+<script>
+const KosiLines = KosiCell.create;
+(function () {
+  const $ = id => document.getElementById(id);
+  const canvas = $("stage"), caption = $("caption");
+  const orb = KosiLines(canvas);
+  if (!orb) { caption.textContent = "This browser can't draw here."; return; }
+  const forms = [...document.querySelectorAll(".row button[data-form]")];
+  forms.forEach(b => b.addEventListener("click", () => { orb.setForm(b.dataset.form); forms.forEach(x => x.setAttribute("aria-pressed", String(x === b))); setState(state); }));
+  const TEXT = [
+    { title: "Kosi, resting", f: "162 cells on a geodesic sphere · r = 1 + 0.015 · sin(1.2 t)" },
+    { title: "Kosi, listening", f: "r = 1 + a · sin(9θ + 5.5 t) · sin θ,   a grows with your voice" },
+    { title: "Kosi, thinking", f: "c(s) = (sin s + 2 sin 2s,  cos s − 2 cos 2s,  −sin 3s)" },
+    { title: "Kosi, speaking", f: "r = 1 + Σ aₖ · bₖ(φ) · sin^1.6 θ,   aₖ from the voice" }
+  ];
+  const FORM0 = { cell: "162 cells: the dual of a geodesic sphere, 12 pentagons and 150 hexagons", geodesic: "icosahedron, each face cut into 25 triangles, pushed onto r = 1", revolved: "a circle revolved about the y-axis: 28 meridians, 13 parallels" };
+  const shapeBtns = [...document.querySelectorAll(".row button[data-shape]")], wanderBtn = document.getElementById("b-wander");
+  let wander = true, wanderAt = 0, wanderI = 0;
+  const WANDER = ["sphere", "amoeba", "virus", "torus", "amoeba", "twist", "cube", "seed", "sphere"];
+  function setShape(n) { orb.setShape(n); shapeBtns.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.shape === n))); }
+  shapeBtns.forEach(b => b.addEventListener("click", () => { wander = false; wanderBtn.setAttribute("aria-pressed", "false"); setShape(b.dataset.shape); }));
+  wanderBtn.addEventListener("click", () => { wander = !wander; wanderBtn.setAttribute("aria-pressed", String(wander)); wanderAt = 0; });
+  // when Kosi answers, the body takes a shape that suits the topic
+  const TOPIC = [[/math|equation|algebra|geometry|topolog|number|proof|calcul/i, "torus"], [/cell|biolog|life|grow|body|organ/i, "amoeba"],
+    [/idea|spark|energy|virus|attack|danger|bug|error/i, "virus"], [/code|program|build|compile|kosika|block|struct/i, "cube"],
+    [/dna|twist|spiral|helix|time|music|dance/i, "twist"], [/nature|sea|shell|fibonacci|golden|art|beaut|seed|plant/i, "seed"]];
+  function topicShape(text) { for (const [re, n] of TOPIC) if (re.test(text)) return n; return null; }
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const chips = [...document.querySelectorAll(".row button[data-state]")];
+  const autoBtn = $("b-auto"), mic = $("mic");
+  let state = 0, since = 0, now = 0, auto = true, step = 0, busy = false;
+  let line = null, pulse = 0, speakUntil = 0;
+  const history = [];
+  const demo = [
+    { s: 0, dur: 3.4, who: "Kosi", text: "Resting. Tap the microphone or type when you need me." },
+    { s: 1, dur: 4.2, who: "You", text: "Kosi, plan my study for tomorrow. Discrete maths and some quantum." },
+    { s: 2, dur: 3.6, who: "Kosi", text: "Checking your week and what you finished today…" },
+    { s: 3, dur: 6.5, who: "Kosi", text: "Tomorrow: graph theory proofs at nine, a quantum problem set after lunch, and a short review before bed." }
+  ];
+  function setState(i) {
+    state = i; since = now; orb.setState(i);
+    chips.forEach((b, j) => b.setAttribute("aria-pressed", String(j === i)));
+    $("r-state").textContent = orb.names[i]; $("title").textContent = TEXT[i].title; $("formula").textContent = (i === 2 && orb.form !== "revolved") ? "mitosis: x → 0.62x ± 0.66m,  the nucleus divides too" : (i === 0 ? FORM0[orb.form] : TEXT[i].f);
+  }
+  function say(who, text, speed) { line = { who, cls: who === "Kosi" ? "kosi" : "you", text, start: now, speed: speed || 30 }; }
+  function setAuto(on) { auto = on; autoBtn.setAttribute("aria-pressed", String(on)); if (on) { step = 0; setState(demo[0].s); say(demo[0].who, demo[0].text); } }
+  function renderLine() {
+    if (!line) return;
+    const n = line.speed === Infinity ? line.text.length : Math.min(line.text.length, Math.floor((now - line.start)*line.speed));
+    caption.innerHTML = "";
+    const who = document.createElement("span"); who.className = "who " + line.cls; who.textContent = line.who;
+    caption.append(who, document.createTextNode(line.text.slice(0, n)));
+    if (n < line.text.length || (state === 1 && line.cls === "you")) { const c = document.createElement("span"); c.className = "cursor"; c.innerHTML = "&nbsp;"; caption.append(c); }
+  }
+  chips.forEach((b, i) => b.addEventListener("click", () => { setAuto(false); setState(i); if (i === 3) speakUntil = now + 1e6; const d = demo.find(x => x.s === i); say(d.who, d.text); }));
+  autoBtn.addEventListener("click", () => setAuto(!auto));
+  addEventListener("keydown", e => { if (e.target.tagName === "INPUT") return; const k = +e.key; if (k >= 1 && k <= 4) chips[k-1].click(); });
+  let drag = null;
+  canvas.addEventListener("pointerdown", e => { drag = { x: e.clientX, y: e.clientY, t: performance.now() }; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener("pointermove", e => { if (!drag) return; const t = performance.now(), dt = Math.max(8, t - drag.t);
+    orb.spin((e.clientX - drag.x)/dt*2.2, (e.clientY - drag.y)/dt*1.2); drag = { x: e.clientX, y: e.clientY, t }; });
+  canvas.addEventListener("pointerup", () => { drag = null; });
+
+  // ---- conversation: dictation in, Claude thinks, Claude voice out ----
+  let dict = null, tts = null, sample = null;
+  const cl = window.claude;
+  const use = name => (cl && cl.use ? cl.use(name).catch(() => null) : Promise.resolve(null));
+  use("dictation").then(d => { dict = d; $("r-ears").textContent = d ? "mic" : "typing"; if (d) wireDictation(); });
+  use("tts").then(t => { tts = t; $("r-voice").textContent = t ? "on" : "text"; if (t) t.onState(({ state: s }) => { ttsSpeaking = s === "speaking" || s === "starting"; }); });
+  use("sample").then(s => { sample = s; });
+  setTimeout(() => { if (!dict) $("r-ears").textContent = "typing"; if (!tts) $("r-voice").textContent = "text"; }, 10500);
+  let ttsSpeaking = false;
+
+  let heard = "", partial = "", silence = null, listening = false;
+  function wireDictation() {
+    dict.onPartial(({ text }) => { partial = text; pulse = 1; showHeard(); armSilence(); });
+    dict.onFinal(({ text }) => { heard = (heard + " " + text).trim(); partial = ""; pulse = 1; showHeard(); armSilence(); });
+    dict.onState(({ state: s, reason }) => {
+      if (s === "idle") {
+        listening = false; mic.setAttribute("aria-pressed", "false");
+        clearTimeout(silence);
+        const text = (heard + " " + partial).trim(); heard = ""; partial = "";
+        if (text) ask(text);
+        else if (!busy) { setState(0); if (reason === "not_granted" || reason === "unavailable") { mic.hidden = true; say("Kosi", "I can't hear you in this view, so type to me instead.", Infinity); } }
+      }
+    });
+  }
+  function showHeard() { line = { who: "You", cls: "you", text: (heard + " " + partial).trim(), start: now, speed: Infinity }; }
+  function armSilence() { clearTimeout(silence); silence = setTimeout(() => { if (listening) dict.stop().catch(() => {}); }, 1800); }
+
+  mic.addEventListener("click", () => {
+    if (!dict) { $("ask-text").focus(); say("Kosi", "Type your question here. Speaking works in Chrome, Edge and the Claude desktop app.", Infinity); return; }
+    if (listening) { dict.stop().catch(() => {}); return; }
+    stopTalking();
+    const p = dict.start(); // straight from the click
+    listening = true; heard = ""; partial = "";
+    setAuto(false); setState(1); mic.setAttribute("aria-pressed", "true");
+    say("You", "", Infinity);
+    p.catch(err => {
+      listening = false; mic.setAttribute("aria-pressed", "false"); setState(0);
+      const c = err && err.code;
+      if (c === "not_granted" || c === "unavailable") { mic.hidden = true; say("Kosi", "No microphone here, so type to me instead.", Infinity); }
+      else if (c !== "stopped") say("Kosi", "I couldn't start listening. Try again in a moment.", Infinity);
+    });
+  });
+  $("ask").addEventListener("submit", e => {
+    e.preventDefault(); const v = $("ask-text").value.trim(); if (!v) return;
+    $("ask-text").value = ""; stopTalking(); setAuto(false); say("You", v, Infinity); ask(v);
+  });
+  function stopTalking() { if (tts && tts.active()) { tts.stop().catch(() => {}); } speakUntil = 0; }
+
+  const PERSONA = "You are Kosi, the warm, upbeat voice assistant of Kosika, an AI programming language and platform that Aryan is building. Kosi's mascot is a small sun. Reply as spoken words: one to three short sentences, plain text, no lists, no markdown, no emoji.";
+  async function ask(text) {
+    busy = true; setState(2);
+    history.push({ role: "user", content: text });
+    while (history.length > 8) history.shift();
+    let reply = "";
+    if (sample) {
+      try {
+        const msgs = history.map((m, i) => i === 0 && m.role === "user" ? { role: "user", content: PERSONA + "\n\n" + m.content } : m);
+        if (msgs[0].role !== "user") msgs.shift();
+        const res = await sample(msgs, { modelTier: "quick", cache: false });
+        reply = (res.text || "").trim();
+      } catch (err) {
+        reply = err && err.code === "rate_limited" ? "I need a short breather. Ask me again in a minute." : "My thinking link isn't open in this view, so I can only show how I'd look while answering.";
+      }
+    } else {
+      await new Promise(r => setTimeout(r, 1600));
+      reply = "I heard you. In this view I can't reach my thinking yet, but this is how I'll look and sound when I answer.";
+    }
+    history.push({ role: "assistant", content: reply });
+    speak(reply);
+  }
+  function speak(text) {
+    { const n = topicShape(text); if (n) { setShape(n); wanderAt = now + 12; } }
+    setState(3); say("Kosi", text, 15);
+    speakUntil = now + Math.max(2.5, text.length/15 + 0.8);
+    if (tts) {
+      ttsSpeaking = true;
+      tts.speak(text, { voice: "glassy" }).then(done, done);
+    }
+    function done() { ttsSpeaking = false; speakUntil = Math.min(speakUntil, now + 0.4); }
+  }
+
+  // ---- audio file drives the voice directly ----
+  let analyser = null, freq = null, audioEl = null;
+  $("f-audio").addEventListener("change", e => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext; const ac = new AC();
+      if (audioEl) audioEl.pause();
+      audioEl = new Audio(URL.createObjectURL(f)); audioEl.loop = true;
+      const src = ac.createMediaElementSource(audioEl);
+      analyser = ac.createAnalyser(); analyser.fftSize = 256; analyser.smoothingTimeConstant = .55;
+      src.connect(analyser); analyser.connect(ac.destination); freq = new Uint8Array(analyser.frequencyBinCount);
+      audioEl.play().catch(() => {});
+      setAuto(false); setState(3); say("Kosi", "Moving with " + f.name, Infinity); speakUntil = Infinity;
+    } catch (err) { say("Kosi", "That file couldn't play here. Try an .mp3 or .wav file.", Infinity); }
+  });
+
+  function wob(x) { return Math.sin(x)*.5 + Math.sin(x*2.31+1.3)*.3 + Math.sin(x*5.17+.7)*.2; }
+  function voice(t) {
+    const b = new Array(16).fill(0); let lv = 0;
+    if (state === 3 && analyser && speakUntil === Infinity) {
+      analyser.getByteFrequencyData(freq); let sum = 0;
+      for (let i = 0; i < 16; i++) { let v = 0; for (let j = 0; j < 4; j++) v += freq[2 + i*4 + j]; b[i] = v/(4*255); sum += b[i]; }
+      return { lv: Math.min(1, sum/16*2.2), b };
+    }
+    if (state === 3) {
+      const talking = auto || ttsSpeaking || now < speakUntil;
+      const syl = Math.max(0, Math.sin(t*8.5)*.6 + wob(t*3.1)*.6);
+      lv = talking ? Math.min(1, (.3 + .8*syl)*(Math.sin(t*.9) > -.75 ? 1 : .3)) : 0;
+      for (let i = 0; i < 16; i++) b[i] = lv*Math.max(0, .45 + .55*wob(t*(4 + i*.6) + i*1.9));
+    } else if (state === 1) {
+      const talk = auto ? ((now - since) < 3.4 ? 1 : .15) : (.2 + .8*pulse);
+      lv = Math.max(0, (.32 + .4*wob(t*6.3))*talk);
+      for (let i = 0; i < 16; i++) b[i] = lv*(.5 + .5*wob(t*5 + i));
+    } else if (state === 2) lv = .08 + .05*Math.sin(t*4);
+    return { lv, b };
+  }
+
+
+  setAuto(true);
+  let last = performance.now();
+  const meter = $("r-meter"), rLines = $("r-lines");
+  function frame(ms) {
+    const dt = Math.min(.05, (ms - last)/1000); last = ms;
+    now += dt*(reduced ? .35 : 1);
+    pulse *= Math.exp(-dt*2.5);
+    if (wander && now > wanderAt) { wanderAt = now + 5.5; wanderI = (wanderI + 1) % WANDER.length; setShape(WANDER[wanderI]); }
+    if (auto) { const cur = demo[step]; if (now - since > cur.dur) { step = (step + 1) % demo.length; setState(demo[step].s); say(demo[step].who, demo[step].text, demo[step].s === 3 ? 24 : 30); } }
+    else if (state === 3 && !ttsSpeaking && now > speakUntil) { setState(0); busy = false; }
+    const v = voice(now); orb.setVoice(v.lv, v.b);
+    orb.draw(now, dt);
+    meter.style.width = (orb.level*100).toFixed(0) + "%"; rLines.textContent = orb.count;
+    renderLine();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  window.kosiOrb = orb;
+  window.kosiPreview = i => { setAuto(false); setState(i); if (i === 3) speakUntil = now + 1e6; const d = demo.find(x => x.s === i); say(d.who, d.text, Infinity); };
+})();
+</script>
+</body></html>
