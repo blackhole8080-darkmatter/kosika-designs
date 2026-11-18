@@ -12,6 +12,38 @@ page.
 
 ![A sunflower's seed head, traced and counted](shots/sunflower-fibonacci.jpg)
 
+## Gallery
+
+Kosi, the assistant, is a living white-line cell drawn by
+[kosi/kosi-cell.js](kosi/kosi-cell.js): 162 cells on a geodesic body, a
+nucleus inside, amber where a cell fires. It changes body with what it is
+talking about.
+
+<p><img src="shots/gallery/kosi-shapes.gif" width="300" alt="Kosi changing shape: sphere, amoeba, spiked, torus, cube, twist, seed"></p>
+
+<table>
+<tr>
+<td><img src="shots/gallery/k-torus.webp" width="190" alt="Kosi as a torus"></td>
+<td><img src="shots/gallery/k-cube.webp" width="190" alt="Kosi as a cube"></td>
+<td><img src="shots/gallery/k-amoeba.webp" width="190" alt="Kosi as an amoeba"></td>
+<td><img src="shots/gallery/k-virus.webp" width="190" alt="Kosi spiked"></td>
+</tr>
+<tr><td>Maths</td><td>Code</td><td>Life</td><td>An idea, or a bug</td></tr>
+</table>
+
+The same white-line look draws mathematics in 3D (the `plot` kind):
+
+<table>
+<tr>
+<td><img src="shots/gallery/s-gyroid.gif" width="280" alt="A gyroid turning"></td>
+<td><img src="shots/gallery/a-light-bending.gif" width="280" alt="Light bending round a mass"></td>
+</tr>
+<tr><td>A gyroid, found by marching tetrahedra</td><td>Light bending round a mass</td></tr>
+</table>
+
+**Spin Kosi yourself, and see every drawing moving, in the
+[Kosika Gallery](https://blackhole8080-darkmatter.github.io/kosika-site/gallery/).**
+
 ## Try it
 
 Kosika Designs needs the Kosika language next to it, in one folder:
